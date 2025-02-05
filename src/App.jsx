@@ -25,7 +25,7 @@ function App() {
     console.log("Current user:", user); // Debug
     return (
 
-        <div className="App">
+        <div className="App cv-container">
             {!user ? (
                 <div>
                     <div>

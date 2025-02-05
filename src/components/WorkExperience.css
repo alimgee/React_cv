@@ -1,0 +1,47 @@
+/* WorkExperience.css */
+
+/* Card Styles */
+.work-experience-item {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.work-experience-item .card-body {
+    padding: 20px;
+}
+
+/* Content Styles */
+.work-experience-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.work-experience-company {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.work-experience-dates {
+    text-align: right;
+    font-style: italic;
+    color: #777;
+}
+
+.work-experience-description {
+    margin-top: 10px;
+}
+
+/* ... (Form and Button styles - same as before) */
+
+/* No Data Message */
+.no-data-message {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+    margin-top: 20px;
+}

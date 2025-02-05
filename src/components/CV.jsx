@@ -1,69 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import supabase from '../supabaseClient';
-import WorkExperience from './WorkExperince';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap'; // Import grid components
+import WorkExperience from './WorkExperince'; // Import your components
 import Education from './Education';
-import Hobbies from './Hobbies';
 import VoluntaryWork from './VoluntaryWork';
+import Hobbies from './Hobbies';
 
 function CV({ session, user }) {
-    const [cvData, setCvData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        if (session) {
-            setLoading(true);
-            supabase
-                .from('cv_data')
-                .select('*')
-                .eq('user_id', session.user.id)
-                .then(({ data, error }) => {
-                    if (error) {
-                        setError(error);
-                        console.error("Supabase query error:", error); 
-                    } else if (data && data.length > 0) {
-                        setCvData(data[0]);
-                        console.log("CV Data fetched:", data[0]);
-                    } else {
-                        console.log('No CV data found for this user. Creating a new entry with default data...');
-
-                        const defaultCVData = {
-                            work_experience: [],
-                            education: [],
-                            voluntary_work: [],
-                            hobbies: [],
-                            references: "",
-                        };
-
-                        supabase
-                            .from('cv_data')
-                            .insert([{ user_id: session.user.id, ...defaultCVData }])
-                            .then(({ data, error }) => {
-                                if (data) setCvData(data[0]);
-                                if (error) setError(error);
-                            });
-                    }
-                })
-                .finally(() => setLoading(false));
-        }
-    }, [session, user]);
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-    if (!cvData) return <div>No data yet.</div>;
+    const cvData = { // Replace with your actual data fetching logic
+        work_experience: [
+            { title: 'test title', company: 'test company', dates: 'dec', description: 'dsfasd afad afd adf adf' }
+        ],
+        education: [],
+        voluntary_work: [],
+        hobbies: []
+    };
 
     return (
-        <div>
-            {user && (
-                <div>
-                    <p>Welcome, {user.email}!</p>
-                </div>
-            )}
-            <WorkExperience data={cvData.work_experience} cvDataId={cvData.id} />
-            <Education data={cvData.education} cvDataId={cvData.id} />
-            <VoluntaryWork data={cvData.voluntary_work} cvDataId={cvData.id} />
-            <Hobbies data={cvData.hobbies} cvDataId={cvData.id} />
-        </div>
+        <Container> {/* Wrap everything in a Container */}
+            <Row> {/* Row for Work Experience */}
+                <Col md={12}> {/* Full width for the heading and content */}
+                    <div className="work-experience-section">
+                        <h2>Work Experience</h2>
+                        <WorkExperience data={cvData.work_experience} cvDataId={cvData.id} />
+                    </div>
+                </Col>
+            </Row>
+            <Row> {/* Row for Education */}
+                <Col md={12}>
+                    <div className="education-section">
+                        <h2>Education</h2>
+                        <Education data={cvData.education} cvDataId={cvData.id} />
+                    </div>
+                </Col>
+            </Row>
+            <Row> {/* Row for Voluntary Work */}
+                <Col md={12}>
+                    <div className="voluntary-work-section">
+                        <h2>Voluntary Work</h2>
+                        <VoluntaryWork data={cvData.voluntary_work} cvDataId={cvData.id} />
+                    </div>
+                </Col>
+            </Row>
+            <Row> {/* Row for Hobbies */}
+                <Col md={12}>
+                    <div className="hobbies-section">
+                        <h2>Hobbies</h2>
+                        <Hobbies data={cvData.hobbies} cvDataId={cvData.id} />
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 
