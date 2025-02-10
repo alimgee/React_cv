@@ -8,8 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 createRoot(document.getElementById('root')).render(
   <SessionContextProvider supabaseClient={supabase} initialSession={null}>
-    <StrictMode>
+ 
       <App />
-    </StrictMode>
+
   </SessionContextProvider>
 )

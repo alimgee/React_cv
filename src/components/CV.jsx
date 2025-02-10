@@ -61,8 +61,8 @@ function CV({ user }) { // Receive the user object as a prop
                 <> {/* Fragment to wrap multiple elements */}
                     <Row>
                         <Col md={12}>
-                            <div className="work-experience-section">
-                                <h2>Work Experience</h2>
+                            <div>
+                                
                                 <WorkExperience data={cvData.work_experience} cvDataId={cvData.id} />
                             </div>
                         </Col>

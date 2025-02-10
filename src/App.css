@@ -1,32 +1,4 @@
-/* App.css or styles.css */
-
-/* Reset/Normalize */
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: sans-serif; /* Or your preferred font */
-    background-color: #f0f0f0; /* Replace with your PDF background color */
-}
-
-#root > div { /* Main app container */
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.work-experience-section h2,  /* Target other section headings similarly */
-.education-section h2,
-.voluntary-work-section h2,
-.hobbies-section h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #2a5ac0; /* Or a suitable color from your PDF */
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
+h2 {
+    color: #007bff;
     margin-bottom: 20px;
 }

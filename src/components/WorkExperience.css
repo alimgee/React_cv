@@ -1,47 +1,138 @@
 /* WorkExperience.css */
-
-/* Card Styles */
-.work-experience-item {
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.work-experience-item .card-body {
+.work-experience-section {
     padding: 20px;
 }
 
-/* Content Styles */
-.work-experience-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 5px;
+.work-experience-section h2 {
     color: #333;
+    margin-bottom: 20px;
+}
+
+.work-experience-item {
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.work-experience-item .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.company-title-dates {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .work-experience-company {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 10px;
+    color: #343a40;
+    order: 1;
+}
+
+.work-experience-title {
+    font-weight: bold;
+    color: #333;
+    order: 2;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .work-experience-dates {
-    text-align: right;
     font-style: italic;
-    color: #777;
+    color: #6c757d;
+    order: 3;
 }
 
 .work-experience-description {
+    color: #495057;
+    white-space: pre-wrap;
     margin-top: 10px;
+    width: 100%;
 }
 
-/* ... (Form and Button styles - same as before) */
+.work-experience-description ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 1rem;
+}
 
-/* No Data Message */
+.work-experience-description li {
+    margin-bottom: 0.5rem;
+}
+
+.work-experience-description strong {
+    font-weight: bold;
+}
+
+.work-experience-description em {
+    font-style: italic;
+}
+
 .no-data-message {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #777;
+    font-style: italic;
+    color: #6c757d;
     margin-top: 20px;
+    text-align: center;
+}
+
+.work-experience-section .form-label {
+    font-weight: bold;
+}
+
+.work-experience-section .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.work-experience-section .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.work-experience-section .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.work-experience-section .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Styles specifically for the edit form */
+.work-experience-item .card-body .edit-form {  /* Add class to the form */
+    width: 100%; /* Make the form take full width */
+}
+
+.work-experience-item .card-body .edit-form .form-group { /* Target form groups */
+    width: 100%;
+}
+
+.work-experience-item .card-body .edit-form .form-control { /* Target form controls */
+    width: calc(100% - 30px); /* Adjust for padding/margins if needed */
+}
+
+/* Target labels to align them properly */
+.work-experience-item .card-body .edit-form .form-label {
+    width: 150px; /* Adjust as needed */
+    display: inline-block; /* Make labels behave like inline elements */
+    vertical-align: middle; /* Align labels vertically with inputs */
+    margin-bottom: 0; /* Remove default margin */
+    padding-top: 8px; /* Add some top padding to align with input text */
+}
+
+/* Target the rest of the form controls to align them with the labels */
+.work-experience-item .card-body .edit-form .form-control {
+    display: inline-block; /* Make inputs behave like inline elements */
+    width: calc(100% - 160px); /* Adjust as needed - label width + some spacing */
+    vertical-align: middle; /* Align inputs vertically with labels */
+}
+
+.work-experience-section h2 {
+    color: #007bff;
+    margin-bottom: 20px;
 }
