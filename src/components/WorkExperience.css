@@ -50,7 +50,7 @@
 .work-experience-description {
     color: #495057;
     white-space: pre-wrap;
-    margin-top: 10px;
+    margin-top: 3rem;
     width: 100%;
 }
 
@@ -70,6 +70,10 @@
 
 .work-experience-description em {
     font-style: italic;
+}
+
+.work-experience-description ul li:last-child {
+    font-weight: bold;
 }
 
 .no-data-message {
