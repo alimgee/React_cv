@@ -103,6 +103,9 @@
     border-color: #28a745;
 }
 
+.work-experience-item .card-body {
+    width: 60rem;
+}
 /* Styles specifically for the edit form */
 .work-experience-item .card-body .edit-form {  /* Add class to the form */
     width: 100%; /* Make the form take full width */

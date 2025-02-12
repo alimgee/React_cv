@@ -47,7 +47,7 @@ function WorkExperience({ data, cvDataId }) {
     };
 
     const handleAddWorkExperience = () => {
-        setEditedData([...editedData, { title: '', company: '', dates: '', description: '' }]);
+        setEditedData([...editedData, { title: '', company: '', dates: '', description: [''] }]); // Initialize with an array
         setIsEditing([...isEditing, true]);
     };
 
@@ -68,39 +68,55 @@ function WorkExperience({ data, cvDataId }) {
                     <Card key={item.id || index} className="mb-3 work-experience-item">
                         <Card.Body>
                             {isEditing[index] ? (
-                                <Form>
+                                <Form className="edit-form"> {/* Added edit-form class */}
                                     <Form.Group className="mb-2">
                                         <Form.Label>Title</Form.Label>
-                                        <Form.Control 
-                                            type="text" 
-                                            value={item.title || ''} 
-                                            onChange={(e) => handleInputChange(index, 'title', e.target.value)} 
+                                        <Form.Control
+                                            type="text"
+                                            value={item.title || ''}
+                                            onChange={(e) => handleInputChange(index, 'title', e.target.value)}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-2">
                                         <Form.Label>Company</Form.Label>
-                                        <Form.Control 
-                                            type="text" 
-                                            value={item.company || ''} 
-                                            onChange={(e) => handleInputChange(index, 'company', e.target.value)} 
+                                        <Form.Control
+                                            type="text"
+                                            value={item.company || ''}
+                                            onChange={(e) => handleInputChange(index, 'company', e.target.value)}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-2">
                                         <Form.Label>Dates</Form.Label>
-                                        <Form.Control 
-                                            type="text" 
-                                            value={item.dates || ''} 
-                                            onChange={(e) => handleInputChange(index, 'dates', e.target.value)} 
+                                        <Form.Control
+                                            type="text"
+                                            value={item.dates || ''}
+                                            onChange={(e) => handleInputChange(index, 'dates', e.target.value)}
                                         />
                                     </Form.Group>
                                     <Form.Group className="mb-2">
                                         <Form.Label>Description</Form.Label>
-                                        <Form.Control 
-                                            as="textarea" 
-                                            rows={3} 
-                                            value={item.description || ''} 
-                                            onChange={(e) => handleInputChange(index, 'description', e.target.value)} 
-                                        />
+                                        {Array.isArray(item.description) ? (
+                                            item.description.map((descItem, descIndex) => (
+                                                <Form.Control
+                                                    as="textarea"
+                                                    rows={2}
+                                                    key={descIndex}
+                                                    value={descItem}
+                                                    onChange={(e) => {
+                                                        const newDescription = [...item.description];
+                                                        newDescription[descIndex] = e.target.value;
+                                                        handleInputChange(index, 'description', newDescription);
+                                                    }}
+                                                />
+                                            ))
+                                        ) : (
+                                            <Form.Control
+                                                as="textarea"
+                                                rows={2}
+                                                value={item.description || ''}
+                                                onChange={(e) => handleInputChange(index, 'description', e.target.value)}
+                                            />
+                                        )}
                                     </Form.Group>
                                     <div className="d-flex justify-content-end">
                                         <Button variant="primary" onClick={handleSaveClick} className="me-2">Save</Button>
@@ -115,7 +131,15 @@ function WorkExperience({ data, cvDataId }) {
                                         <span className="work-experience-title">{item.title}</span>
                                         <span className="work-experience-dates">{item.dates}</span>
                                     </div>
-                                    <p className="work-experience-description">{item.description}</p>
+                                    <ul className="work-experience-description">
+                                        {Array.isArray(item.description) ? (
+                                            item.description.map((descItem, descIndex) => (
+                                                <li key={descIndex}>{descItem}</li>
+                                            ))
+                                        ) : (
+                                            <li>{item.description}</li>
+                                        )}
+                                    </ul>
                                 </div>
                             )}
                         </Card.Body>
